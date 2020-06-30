@@ -51,7 +51,7 @@ def basic_analysis_4():
     for i in df2['Mileage'].values :
         if not np.isnan(i):
             mils.append(i)
-    return np.average(mils)
+    print(np.average(mils))
 
 def basic_analysis_5():
     df1=pd.read_excel(xls,'AlertData')
@@ -94,6 +94,8 @@ def basic_analysis_6():
         high = time.strftime( "%I:%M %p", t )
         print(bus, low[:2], low[-2:], 'to',high[:2], high[-2:])
 
+
+
 def hypothesis_testing_1():
     df1=pd.read_excel(xls,'AlertData')
     df2=pd.read_excel(xls,'FuelInfo')
@@ -106,6 +108,8 @@ def hypothesis_testing_1():
     print('Since chi-squared stat is very high, we can reject null hypo that alarm types are identically distributed among the buses.')
     # distribution plot
     df1.groupby(['deviceId','alarmType']).size().unstack().plot(kind = 'bar',stacked=False,figsize=(8,8))
+    plt.show()
+    
 
 def hypothesis_testing_2():
     #pre requirements
@@ -124,6 +128,7 @@ def hypothesis_testing_2():
     print('Null hypothesis is rejected. Thus alarm types and hours are dependent')
     # distribution plot
     df1.groupby(['hour','alarmType']).size().unstack().plot(kind = 'bar',stacked=False,figsize=(8,8))
+    plt.show()
 
 def hypothesis_testing_3():
     df1=pd.read_excel(xls,'AlertData')
@@ -186,6 +191,7 @@ def visualization1():
     df1=pd.read_excel(xls,'AlertData')
     df2=pd.read_excel(xls,'FuelInfo')
     df1.groupby(['deviceId','alarmType']).size().unstack().plot(kind = 'bar',stacked=False,figsize=(8,8))
+    plt.show()
 
 def visualization2_1():
     df1=pd.read_excel(xls,'AlertData')
@@ -378,6 +384,7 @@ def visualization3():
     plt.bar(r2,nperc,label='night',width=.25)
     plt.xticks([r + .25 for r in range(9)], buses, rotation = 90, fontsize=10)
     plt.rcParams['figure.figsize'] = (8, 8)
+    plt.show()
 
 def visualization4():
     df1=pd.read_excel(xls,'AlertData')
@@ -391,6 +398,7 @@ def visualization4():
     plt.bar(buses,avg_speeds)
     plt.xticks(buses, rotation=90)
     plt.ylabel('avg speed')
+    plt.show()
 
 def visualization5():
     df1=pd.read_excel(xls,'AlertData')
@@ -404,6 +412,7 @@ def visualization5():
     plt.bar(buses,max_speeds)
     plt.xticks(buses, rotation=90)
     plt.ylabel('max speed')
+    plt.show()
 
 def visualization6():
     df1=pd.read_excel(xls,'AlertData')
@@ -522,6 +531,7 @@ def visualization7_1():
     plt.ylabel('frequency of HMW')
     plt.xlabel('hour')
     plt.rcParams['figure.figsize'] = (10,10)
+    plt.show()
 
 def visualization7_2():
     df1=pd.read_excel(xls,'AlertData')
@@ -603,6 +613,7 @@ def visualization7_2():
     plt.ylabel('frequency of FCW')
     plt.xlabel('hour')
     plt.rcParams['figure.figsize'] = (10,10)
+    plt.show()
 
 def visualization7_3():
     df1=pd.read_excel(xls,'AlertData')
@@ -684,6 +695,7 @@ def visualization7_3():
     plt.ylabel('frequency of PCW')
     plt.xlabel('hour')
     plt.rcParams['figure.figsize'] = (10,10)
+    plt.show()
 
 def visualization8_1():
     df1=pd.read_excel(xls,'AlertData')
@@ -700,6 +712,7 @@ def visualization8_1():
     plt.yticks(fontsize=10)
     plt.xlabel("speed variation for FCW",fontsize=10)
     plt.ylabel("speed",fontsize=10)
+    plt.show()
 
 def visualization8_2():
     df1=pd.read_excel(xls,'AlertData')
@@ -716,6 +729,7 @@ def visualization8_2():
     plt.yticks(fontsize=10)
     plt.xlabel("speed variation for HMW",fontsize=10)
     plt.ylabel("speed",fontsize=10)
+    plt.show()
 
 def visualization8_3():
     df1=pd.read_excel(xls,'AlertData')
@@ -732,6 +746,7 @@ def visualization8_3():
     plt.yticks(fontsize=10)
     plt.xlabel("speed variation for PCW",fontsize=10)
     plt.ylabel("speed",fontsize=10)
+    plt.show()
 
 def visualization9(busid):
     df1=pd.read_excel(xls,'AlertData')
