@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Links
+	</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+	{% with message = get_flashed_messages()[0] %}
+		{% if message %}
+			<div class="alert alert-success mt-3 text-center container" role="alert" style="width: 50%;">
+				{{ message }}
+			</div>
+		{% endif %}
+	{% endwith %}
+	<center>
+		<a type="button" class="btn btn-primary" href="{{url_for('hypothesis_distribution_of_alarm_types_accross_buses')}}">Get The Hypothesis And Distribution Of Alarm Types Across All The Buses</a><br><br>
+		<a type="button" class="btn btn-primary" href="{{url_for('hypothesis_distribution_of_alarm_types_accross_hours')}}">Get The Hypothesis Of Alarm Types Across All The Buses</a><br><br>
+		<a type="button" class="btn btn-primary" href="{{url_for('best_speed_for_optimal_mileage')}}">Best Speed For Optimal Mileage</a><br><br>
+		<a type="button" class="btn btn-primary" href="{{url_for('graph_of_device_id_vs_frequency_of_FCW_6_to_6')}}">FCW Frequency From 6am to 6pm</a><br><br>
+		<a type="button" class="btn btn-primary" href="{{url_for('HWM_turning_into_FCW')}}">How many HMW's Turned To FCW's</a><br><br>
+		<a type="button" class="btn btn-primary" href="{{url_for('when_max_alerts_were_generated_for_each_bus')}}">Time When Max Alerts Are Generated For Each Bus</a><br><br>
+		<a type="button" class="btn btn-primary" href="{{url_for('distribution_of_speed_for_FCW')}}">Distribution Of Speed For FCW</a><br><br>
+	</center>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
