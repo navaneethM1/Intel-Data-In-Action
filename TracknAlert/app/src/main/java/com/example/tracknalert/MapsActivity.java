@@ -316,7 +316,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void addHeatMap() {
         List<LatLng> list = null;
 
-        // Get the data: latitude/longitude positions of police stations.
         try {
             list = readItems(R.raw.coords);
         } catch (JSONException e) {
