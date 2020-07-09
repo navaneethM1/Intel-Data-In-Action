@@ -94,7 +94,21 @@ def basic_analysis_6():
         high = time.strftime( "%I:%M %p", t )
         print(bus, low[:2], low[-2:], 'to',high[:2], high[-2:])
 
+def basic_analysis_7(alertType):
+    df1=pd.read_excel(xls,'AlertData')
+    print(alertType,':',len(df1[df1['alarmType']==alertType]))
 
+def basic_analysis_8(alertType):
+    df1=pd.read_excel(xls,'AlertData')
+    print(alertType,':',np.average(df[df['alarmType']==alertType]['speed'].values))
+
+def basic_analysis_9(deviceid):
+    df1=pd.read_excel(xls,'AlertData')
+    print(deviceid,':',len(df[df['deviceId']==deviceid]))
+
+def basic_analysis_10(deviceid):
+    df1=pd.read_excel(xls,'AlertData')
+    print(deviceid,':',np.average(df[df['deviceId']==deviceid]['speed'].values))
 
 def hypothesis_testing_1():
     df1=pd.read_excel(xls,'AlertData')
@@ -785,13 +799,12 @@ def visualization9(busid):
 def visualization10():
     df1=pd.read_excel(xls,'AlertData')
     df2=pd.read_excel(xls,'FuelInfo')
-    plt.hist(df1['speed'])
+    sns.distplot(df1['speed']).set_title("Distribution for "+alarmType)
     plt.show()
 
 def visualization11(alarmType):
     df1=pd.read_excel(xls,'AlertData')
-    df2=pd.read_excel(xls,'FuelInfo')
     df1 = df1[df1['alarmType']==alarmType]
-    plt.hist(df1['speed'])
-    plt.title('Distribution for '+alarmType)
+    sns.distplot(df1['speed']).set_title("Distribution for "+alarmType)
     plt.show()
+    
