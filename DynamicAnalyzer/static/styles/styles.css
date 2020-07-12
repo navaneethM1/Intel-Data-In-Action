@@ -1,0 +1,39 @@
+body{
+    background-color:black;
+}
+
+*{
+    color:gray;
+}
+
+p{
+    text-align: center;
+    font-size: 35px;
+}
+
+button{
+    width: 25%;
+    height:100px ;
+    margin: 3%;
+    font-size: small;
+    background-color: cornflowerblue;
+    color: black;
+}
+
+a.link{
+    width:80%;
+    height:50px;
+    background-color:black;
+    color: rgb(102, 6, 102);
+    margin:0px;
+    font-size:25px;
+    padding-left: 30%;
+}
+
+.result{
+    margin-top:15%;
+    text-align: center;
+    border: 2px wheat solid;
+    border-radius:5px;
+
+}

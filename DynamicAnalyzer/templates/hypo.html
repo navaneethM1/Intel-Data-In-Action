@@ -3,6 +3,8 @@
 <head>
 	<title>Hypothesis Testing-{{ title_no }}</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+
 </head>
 <body>
 	<div class="container text-center">
@@ -25,7 +27,7 @@
 		{% endif %}
 		<div class="input-group-append">
 			<center>
-		<a type="button" class="btn btn-primary" href="{{url_for('links')}}">Back To File Page</a>
+		<a type="button" class="btn btn-primary" href="{{url_for('links')}}">Back</a>
 		</div>
 	</div>
 	
