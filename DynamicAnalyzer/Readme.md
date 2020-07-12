@@ -3,7 +3,7 @@ The website provides an interface to future analysis based on newly generated da
 # Files
 - **static** Folder - The 2 CSV files get uploaded to this folder. Later the visualisations too get saved as jpeg images
 - **templates** Folder - It has the HTML Files needed.
-- *intel.py* - The main flask-python script.
+- *server.py* - The main flask-python script.
 # Required Packages
 1. os
 2. matplotlib
