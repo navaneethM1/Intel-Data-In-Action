@@ -9,13 +9,13 @@ app = Flask(__name__)
 def hello_world():
     return "Welcome to TracknAlert"
 
-def DecTreeRes(time,lat,long):
+def DecTreeRes(time,lat,long,speed):
     with open("dtclass", 'rb') as file:  
         model = pickle.load(file)
-    return (model.predict([[time,lat,long]])[0])
+    return (model.predict([[time,lat,long,speed]])[0])
 
-def getPrediction(time,lat,long):
-    res1 = DecTreeRes(time,lat,long)
+def getPrediction(time,lat,long,speed):
+    res1 = DecTreeRes(time,lat,long,speed)
     res2 = ClusterRes([[lat,long]])
     res = res1 + res2
     if(res==2):
@@ -38,8 +38,8 @@ def ClusterRes(coordinates):
 @app.route('/Op/<string>')
 def DecisionTree(string):
     time = datetime.datetime.now().strftime('%H') + "." + datetime.datetime.now().strftime('%M') 
-    lat,long = tuple(map(float,string.split(',')))
-    res = getPrediction(float(time),lat,long)
+    lat,long,speed = tuple(map(float,string.split(',')))
+    res = getPrediction(float(time),lat,long,speed)
     return str(res)
     
 if __name__ == '__main__':

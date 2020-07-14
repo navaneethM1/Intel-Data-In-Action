@@ -74,12 +74,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     MarkerOptions mo;
     Marker marker;
     LocationManager locationManager;
-    String ipaddr = "192.168.1.100";
+    String ipaddr = "192.168.1.101";
     String port = "5000";
     LatLng myCoordinates;
     double curr_lat,curr_long;
     String responseText,prevresponseText;
     int notif_id;
+    double speed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +101,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         keepChecking();
     }
 
+    private double getDistance(double lat1,double lat2,double lon1,double lon2)
+    {
+        double R = 6371e3; // metres
+        double φ1 = lat1 * Math.PI/180; // φ, λ in radians
+        double φ2 = lat2 * Math.PI/180;
+        double Δφ = (lat2-lat1) * Math.PI/180;
+        double Δλ = (lon2-lon1) * Math.PI/180;
+
+        double a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                    Math.cos(φ1) * Math.cos(φ2) *
+                            Math.sin(Δλ/2) * Math.sin(Δλ/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+        double d = R * c; // in metres
+        return d;
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -107,8 +125,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         addHeatMap();
     }
 
+    double prev_lat,prev_long;
+
     @Override
     public void onLocationChanged(Location location) {
+
+        prev_lat = curr_lat;
+        prev_long=curr_long;
         myCoordinates = new LatLng(location.getLatitude(), location.getLongitude());
         curr_lat = location.getLatitude();
         curr_long = location.getLongitude();
@@ -146,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(getApplicationContext(), "notify_001");
-        Intent ii = new Intent(getApplicationContext(), MapsActivity.class);
+        Intent ii = new Intent(getApplicationContext(), Alert.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(MapsActivity.this, 0, ii, 0);
 
 
@@ -185,9 +208,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void checkAlert() {
 
+        speed = getDistance(prev_lat,curr_lat,prev_long,curr_long)*60.0;
         String string_lat = Double.toString(curr_lat);
         String string_long = Double.toString(curr_long);
-        String url = "http://" + ipaddr + ":" + port + "/Op/" + string_lat + "," + string_long;
+        String url = "http://" + ipaddr + ":" + port + "/Op/" + string_lat + "," + string_long + "," + Double.toString(speed);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
@@ -225,6 +249,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 {
                                     notif_id+=1;
                                     notifyUser(notif_id);
+                                    startActivity(new Intent(MapsActivity.this,Alert.class));
                                 }
 
                             }
@@ -248,7 +273,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 checkAlert();
                 handler.postDelayed(this, 1000*10);
             }
-        }, 1000*10);
+        }, 1000*30);
 
 
 
@@ -316,6 +341,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void addHeatMap() {
         List<LatLng> list = null;
 
+        // Get the data: latitude/longitude positions of police stations.
         try {
             list = readItems(R.raw.coords);
         } catch (JSONException e) {
