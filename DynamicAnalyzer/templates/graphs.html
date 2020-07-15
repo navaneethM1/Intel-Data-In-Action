@@ -17,11 +17,47 @@
         </P>
     </center>
         <div>
-            <a class="link" onclick="window.location.href='{{url_for('graph_of_device_id_vs_frequency_of_FCW_6_to_6')}}'">Frequency of FCW alerts for each device</a><br>
+            <h3 id="cat">General</h3>
+            <a class="link" onclick="window.location.href='{{url_for('visualization1')}}'">Distribution of Alert frequencies across devices</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('graph_of_device_id_vs_frequency_of_FCW_6_to_6')}}'">Frequency of FCW alerts for each device: 6am to 6pm</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization2_2')}}'">Frequency of FCW alerts for each device: 6pm to 6am</a><br>
             <a class="link" onclick="window.location.href='{{url_for('HWM_turning_into_FCW')}}'">HMW - FCW transitions</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization7_1')}}'">Frequency of HMW</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization7_2')}}'">Frequency of FCW</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization7_3')}}'">Frequency of PCW</a><br>
+            <br>
+
+            <h3 id="cat">Speed related plots</h3>
+            <a class="link" onclick="window.location.href='{{url_for('visualization4')}}'">Average speed of buses</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization5')}}'">Maximum speed of buses</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization8_1')}}'">Speed variation for FCW</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization8_2')}}'">Speed variation for HMW</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization8_3')}}'">Speed variation for PCW</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization10')}}'">Distribution of alerts over speed-ranges</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization11_1')}}'">Distribution of FCW over speed ranges</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('visualization11_2')}}'">Distribution of PCW over speed ranges</a><br>
             <a class="link" onclick="window.location.href='{{url_for('distribution_of_speed_for_FCW')}}'">Distribution of speed for FCW alerts</a><br>
+            <a class="link" onclick="window.location.href='{{url_for('v6')}}'">Average bus speeds on different days of the week</a><br>
+           <br>
+
+           <h3 id="cat">Time related plots</h3>
+           <a class="link" onclick="window.location.href='{{url_for('visualization6')}}'">Frequency count of alarm in the ith hour</a><br>
+           <a class="link" onclick="window.location.href='{{url_for('v1')}}'">Distribution of alerts over time</a><br>
+           <a class="link" onclick="window.location.href='{{url_for('v2')}}'">Distribution of HMW alerts over time</a><br>
+           <a class="link" onclick="window.location.href='{{url_for('v3')}}'">Distribution of FCW alerts over time</a><br>
+           <a class="link" onclick="window.location.href='{{url_for('v4')}}'">Distribution of PCW alerts over time</a><br>
+           <a class="link" onclick="window.location.href='{{url_for('v5')}}'">Alert frequencies on different days of the week</a><br>
+           <a class="link" onclick="window.location.href='{{url_for('v7')}}'">Speed distribution on different days of the week</a><br>
+           <a class="link" onclick="window.location.href='{{url_for('v8')}}'">Day of the week and Time of the day</a><br>
+           
+           <br>
+
+           
         </div>
-	
+	<div class="input-group-append" style="padding-left: 20%">
+            
+        <a type="button" class="btn btn-primary" href="{{url_for('links')}}" >Back</a>
+        </div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

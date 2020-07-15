@@ -28,6 +28,7 @@ a.link{
     margin:0px;
     font-size:25px;
     padding-left: 30%;
+    cursor: pointer;
 }
 
 .result{
@@ -36,4 +37,8 @@ a.link{
     border: 2px wheat solid;
     border-radius:5px;
 
+}
+
+#cat{
+    text-align: center;
 }
